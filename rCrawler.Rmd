@@ -1,0 +1,39 @@
+---
+title: "webcrawling"
+author: "Christian Barz"
+date: "25 7 2021"
+output: html_document
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## web crawling
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+Let try to crawl popular times from [Wochenmark Pankow am Rathauscenter](https://www.google.com/maps/place/Wochenmarkt+Pankow/@52.5689427,13.4042418,17.75z/data=!3m1!5s0x47a8520dd7cb405b:0xcd3c84fac04d47fe!4m12!1m6!3m5!1s0x47a8520dd6302207:0xd905201c7180246a!2zRGlzZcOxbw!8m2!3d52.5584932!4d13.4130811!3m4!1s0x47a8526bda8b2679:0x43b53eda485faef0!8m2!3d52.5699922!4d13.4062199)
+
+```{r}
+URL <- "https://www.google.com/maps/place/Wochenmarkt+Pankow/@52.5689427,13.4042418,17.75z/data=!3m1!5s0x47a8520dd7cb405b:0xcd3c84fac04d47fe!4m12!1m6!3m5!1s0x47a8520dd6302207:0xd905201c7180246a!2zRGlzZcOxbw!8m2!3d52.5584932!4d13.4130811!3m4!1s0x47a8526bda8b2679:0x43b53eda485faef0!8m2!3d52.5699922!4d13.4062199"
+```
+
+read html
+
+```{r}
+html_doc <- read_html(URL)
+```
+
+choose elements
+
+```{r}
+html_doc %>%
+  html_nodes('//*[contains(concat( " ", @class, " " ), concat( " ", "section-popular-times-graph-visible", " " ))]')
+```
+
+
+

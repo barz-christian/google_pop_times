@@ -1,0 +1,31 @@
+---
+title: "leaflet"
+author: "Christian Barz"
+date: "31 7 2021"
+output: 
+  html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#
+
+```{r}
+library(pacman)
+p_load(
+  dplyr,
+  leaflet)
+```
+
+## basic example 
+
+```{r}
+
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=lat, lat=lon, popup="The birthplace of R")
+m
+```
+
