@@ -1,0 +1,148 @@
+---
+title: "Googles popular places for Pankow"
+author: "Christian Barz"
+date: "created: 2021-07-28, reviewed: `r lubridate::today()`"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+    social: menu
+    self_contained: false
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(pacman)
+p_load(flexdashboard,
+       dplyr,
+       ggplot2,
+       DT)
+```
+
+
+```{r load data, include=FALSE}
+# load data
+    df_long <- read.csv("./data/pop_times.csv") %>%
+        select(location, day_of_week , hour, 
+               popularity, current_pop,time_spendt) %>%
+        mutate(location = as.factor(location),
+               day_of_week  = as.factor(day_of_week))
+    
+    df_wide <- read.csv("./data/pop_times_pivot.csv") %>%
+        mutate(location = as.factor(location))
+    
+    # prepare data
+    
+    locations <- unique(df_long$location)
+    
+    df_top_5 <- df_long %>%
+        arrange(desc(popularity)) %>%
+        group_by(location) %>%
+        slice(1:5) 
+```
+
+
+### Remark on UI
+
+Das ist ein erster Vorschlag bitte einfach Wünsche äußern.
+
+#### Zur Bedienung:
+
+- click on the tabs to see a differnt table of the data
+- you can filter the tables by clicking on a box below a column name
+- you can sort a column by clicking on an arrow behind a column name
+
+#### Bemerkung:
+
+Da ich noch nicht die Schnittstelle von Google wirklich gut verstanden habe,
+muß ich an ein paar Stellen auf weniger gute Lösungen zurückgreifen.
+
+Im Moment wird jeder Ort identifiziert durch seinen Namen und seine Addresse.
+Das wird bspw. bei Supermärkten ein Problem, da deren Name "REWE" lautet.
+Ferner kann zur Zeit auf diese Weise nicht jeder Ort abgefragt werden.
+
+Dies ist aber behebbar.
+
+### Display popular times long
+
+
+#### Beispiel 1
+
+*Aufgabe:* Ihr habt am Montag und Dienstag von 10-15 Uhr Zeit und wollt den besten Platz 
+finden.
+
+*Lösung:* Wähle bei `day_of_week` Montag und Dienstag aus und stelle bei `hour` den Slider auf 10-14. Anschließend sortiere `popularity` absteigend durch klicken auf den Pfeil hinter `popularity`.
+
+
+```{r}
+DT::datatable(df_long, 
+                      filter = 'top',
+                      rownames = FALSE,
+                      options = list(
+                          list(pageLength = 25),
+                          rowCallback = JS(
+                              'function(row, data) {',
+                              '$("td", row).each(function(i) {',
+                              'if (i == 0) return; // first column is row names',
+                              'if (parseFloat(data[i]) >= 50.0)',
+                              '$(this).css("color", "red");',
+                              '});',
+                              '}'))
+                      )
+```
+
+
+### Display popular times wide
+
+Anwendungsbeispiel: Durch filtern von `hour` und `location` lassen sich 
+Tage identifizieren an denen viel los ist.
+Sobald die Popularity größer als 50 ist, wird sie rot markiert.
+
+```{r}
+DT::datatable(df_wide, 
+              filter = 'top',
+              rownames = FALSE,
+              options = list(pageLength = 25)
+              )
+```
+
+
+### Display top 5 popular times per location
+
+Hier werden einfach für jede `Location` die Top5 bzgl. `popularity` ausgegeben,
+so kann man bspw. schnell sehen, wann sich welcher Ort am meisten lohnt.
+
+```{r}
+DT::datatable(df_top_5, 
+                      filter = 'top',
+                      rownames = FALSE,
+                      options = list(pageLength = 25))
+```
+
+
+### Plots for popular places
+
+work in progress, ich will nur zeigen, dass sich die Daten auch visualisieren lassen.
+
+Bspw. könnte hier ein interaktiver button hin, damit man sich eine location
+aussucht. Dafür fehlte mir die Zeit.
+
+```{r}
+plots <- lapply(locations, function(x){
+  df_long %>%
+  filter(location == x) %>%
+  ggplot(aes(x = hour, y = popularity,
+             colour = factor(day_of_week))) + geom_point() + labs(title = paste("location:", x))
+})
+plots[[1]]
+plots[[2]]
+plots[[3]]
+plots[[4]]
+plots[[5]]
+plots[[6]]
+plots[[7]]
+plots[[8]]
+plots[[9]]
+plots[[10]]
+```
+

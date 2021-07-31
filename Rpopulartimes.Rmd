@@ -1,0 +1,202 @@
+---
+title: "Rpopulartimes"
+author: "Christian Barz"
+date: "created:2021-07-28, reviewed: `r lubridate::today()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# get popular times using google API
+
+populartimes is an R translation of the python library [populartimes](https://github.com/m-wrzr/populartimes). It provides access to [Google Places API](https://developers.google.com/maps/documentation/places/web-service/overview).
+
+The API uses Google Places Web Service and each APi call is priced over a monthly budget.
+
+For legal concerns please read [Issue #90](https://github.com/m-wrzr/populartimes/issues/90).
+
+As Google Maps is constantly updated this library can be unstable.
+
+## get started and setup
+
+- install the library
+```
+install.packages("remotes")
+remotes::install_github("JosiahParry/populartimes")
+```
+- [get Google Map API key](https://developers.google.com/places/web-service/get-api-key)
+  - create a project with a billing account and the Places API enabled, i.e.
+  - [create google cloud project](https://console.cloud.google.com/projectcreate?_ga=2.109071308.870652759.1627453303-208296733.1627165040) 
+  - [create API key](https://developers.google.com/maps/documentation/places/web-service/get-api-key?hl=de)
+  - utilize API key, for example by setting an environment variable `Google_key` to your key value. For example `Sys.setenv("GOOGLE_KEY" = "your-key-value")`
+  
+  
+```{r}
+library(populartimes)
+library(tidyverse)
+```
+
+## Test
+  
+```{r}
+test <- poptimes_from_address("Brennerberg", "Tiroler Str. 33, 13187 Berlin")
+test
+```
+
+## define places of interest
+
+```{r}
+places_of_interest <- tibble(
+  location = c("Brennerberg",
+               "Kinderspielplatz Arnimplatz",
+               "Zukunftswerkstatt Heinersdorf",
+               "Kissingen-Stadion",
+               "Diseño",
+               "U Vinetastr.",
+               "S+U Pankow",
+               "Wochenmarkt Pankow",
+               "Kirschblüten Pfad",
+               "REWE", # Rewe Eschengraben
+               "Neumann Forum",
+               "S Pankow-Heinersdorf",
+               "PENNY" # Sotty
+               ),
+  address = c("Tiroler Str. 33, 13187 Berlin",
+             "Prenzlauer Berg, 10439 Berlin",
+             "Romain-Rolland-Straße 112, 13089 Berlin",
+             "Forchheimer Str. 22, 13189 Berlin",
+             "Berliner Str. 53, 13189 Berlin",
+             "13189 Berlin",
+             "13187 Berlin",
+             "Breite Str. 17, 13187 Berlin",
+             "KGA Bornholm I 1, 10439 Berlin",
+             "Eschengraben 47, 13189 Berlin",
+             "Neumannstraße 13, 13189 Berlin",
+             "13187 Berlin",
+             "Wisbyer Str. 38, 13189 Berlin"
+             ),
+  place_ID = c("ChIJP9zn9BFSqEcRE2ymZMvoRhk",
+               "ChIJrYEFFAVSqEcRljVmHYbNz54",# arnimplatz
+               "ChIJlcwYIIZNqEcRwLIXc78_Bx8",
+               "ChIJ8UJqZXRSqEcR20TKVGLZY3U",# kissingen stadion
+               "ChIJByIw1g1SqEcRaiSAcRwgBdk",
+               "ChIJvXXwxQ1SqEcRuURoh0MQACM",# U Vineta
+               "ChIJgVQMmG1SqEcROB59hvVm9K0",
+               "ChIJeSaL2mtSqEcR8K5fSNo-tUM",#wochenmarkt pankow
+               "ChIJUwlQieFTqEcRn80wbzLNLM4",
+               "ChIJDWbXAvZNqEcRJ0KxM9Uo3lA",# REWE eschengraben
+               "ChIJ3XM6HAtSqEcR2Or9CGbkI2E",# neumannforum
+               "ChIJqVSMNHlSqEcRODE2mEx0GwI",
+               "ChIJn_rebfdNqEcR0pIqK93_hW0"# konsum Sotty
+               )
+  )
+
+#Edeka neumannstr, 
+#der rewe Eschengraben, 
+
+places_of_interest
+```
+
+get popular times of locations
+
+```{r}
+locations <- places_of_interest$location
+pop_times <- lapply(locations, function(x){
+  address <- places_of_interest %>%
+    filter(location == x) %>%
+    pull(address)
+  poptimes_from_address(place_name = x,
+                        address = address)
+}
+) %>%
+  purrr::set_names(locations)
+```
+
+
+## prepare and save data for app
+
+convert list to data frame
+
+```{r}
+pop_times_df <- lapply(locations, function(x){
+  df <- pop_times[[x]] 
+  dt <- df$popular_times[[1]]
+  dt <- dt %>%
+    mutate(lon = df$lon,
+           lat = df$lat,
+           time_spendt = df$time_spent,
+           current_pop = df$current_popularity,
+           location = x
+           )
+  return(dt)
+}) %>%
+  purrr::reduce(rbind) %>%
+  inner_join(x = ., y = places_of_interest) %>%
+  select(-place_ID)
+```
+
+convert `day_of_week` from a numerical value to a string
+
+```{r}
+pop_times_df <- pop_times_df %>%
+  mutate(day_of_week = if_else(day_of_week=="1","Sonntag", day_of_week),
+         day_of_week = if_else(day_of_week=="2","Montag", day_of_week),
+         day_of_week = if_else(day_of_week=="3","Dienstag", day_of_week),
+         day_of_week = if_else(day_of_week=="4","Mittwoch", day_of_week),
+         day_of_week = if_else(day_of_week=="5","Donnerstag", day_of_week),
+         day_of_week = if_else(day_of_week=="6","Freitag", day_of_week),
+         day_of_week = if_else(day_of_week=="7","Samstag", day_of_week),
+         )
+pop_times_df %>% head()
+```
+
+pivot the data
+
+```{r}
+pop_times_df_pivot <- pop_times_df %>%
+  select(-lat,-lon,-current_pop) %>%
+  pivot_wider(names_from = day_of_week, 
+              id_cols = c(hour,location),
+              values_from = popularity) %>%
+  inner_join(x =., y = places_of_interest %>% select(-place_ID))
+
+pop_times_df_pivot %>% head()
+```
+
+```{r eval=FALSE}
+write_csv(pop_times_df, 
+          "./data/pop_times.csv",
+          )
+
+write_csv(pop_times_df_pivot, 
+          "./data/pop_times_pivot.csv",
+          )
+```
+
+
+## analysis
+
+get top 3 times per place
+
+```{r}
+pop_times_df %>%
+  arrange(desc(popularity)) %>%
+  group_by(location) %>%
+  slice(1:3)
+```
+
+
+```{r}
+plots <- lapply(locations, function(x){
+  pop_times_df %>%
+  filter(location == x) %>%
+  ggplot(aes(x = hour, y = popularity,
+             colour = factor(day_of_week))) + geom_point() + labs(title = paste("location:", x))
+})
+plots
+```
+
+
+
