@@ -148,7 +148,8 @@ pop_times_df <- pop_times_df %>%
          day_of_week = if_else(day_of_week=="5","Donnerstag", day_of_week),
          day_of_week = if_else(day_of_week=="6","Freitag", day_of_week),
          day_of_week = if_else(day_of_week=="7","Samstag", day_of_week),
-         )
+         ) %>%
+  mutate(Zeit = lubridate::now(tzone = "GMT"))
 pop_times_df %>% head()
 ```
 

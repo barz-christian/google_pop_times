@@ -16,23 +16,31 @@ library(pacman)
 p_load(flexdashboard,
        dplyr,
        ggplot2,
+       leaflet,
        DT)
 ```
 
 
 ```{r load data, include=FALSE}
 # load data
-    df_long <- read.csv("./data/pop_times.csv") %>%
-        select(location, day_of_week , hour, 
-               popularity, current_pop,time_spendt) %>%
-        mutate(location = as.factor(location),
-               day_of_week  = as.factor(day_of_week))
-    
+    df_raw <- read.csv("./data/pop_times.csv")
+
     df_wide <- read.csv("./data/pop_times_pivot.csv") %>%
         mutate(location = as.factor(location))
     
     # prepare data
     
+    df_raw <- df_raw %>%
+      mutate(time_spendt = if_else(is.na(time_spendt), "", time_spendt))
+
+    
+    
+    df_long <- df_raw %>%
+        select(location, day_of_week , hour, 
+               popularity, current_pop,time_spendt) %>%
+        mutate(location = as.factor(location),
+               day_of_week  = as.factor(day_of_week))
+        
     locations <- unique(df_long$location)
     
     df_top_5 <- df_long %>%
@@ -44,7 +52,13 @@ p_load(flexdashboard,
 
 ### Remark on UI
 
-Das ist ein erster Vorschlag bitte einfach Wünsche äußern.
+
+Das ist ein Vorschlag **bitte Wünsche äußern!** oder **Probleme benennen, die ihr bei der Organisation habt**.
+
+Ich bitte das springen zwischen deutsch und englisch sowie Rechtschreibfehler zu
+entschuldigen. Hintergrund das Erstellen von Texten (wie diesem) ist zeitaufwendig
+daher fokusiere ich mich auf das was ich spontan für relevant halte (und spontan denke ich ggf. gerade englisch). Wenn dies ein Problem ist einfach sagen und ich
+passe das entsprechend an.
 
 #### Zur Bedienung:
 
@@ -120,6 +134,79 @@ DT::datatable(df_top_5,
 ```
 
 
+
+
+### map shows popularity for all places on monday from 12:00 to 13:00
+
+```{r}
+m <- leaflet() %>%
+  addTiles() 
+
+Uhrzeit <- 12
+Tag <- "Montag"
+
+for(x in locations){
+  # get coords
+  longitude <- df_raw %>%
+    filter(location  == x) %>%
+    pull(lat) %>%
+    unique()
+  latitude <- df_raw %>%
+    filter(location  == x) %>%
+    pull(lon) %>%
+    unique()
+  
+  # get popularity
+  popularity <- df_raw %>%
+    filter(location  == x) %>%
+    filter(hour == Uhrzeit & day_of_week == Tag) %>%
+    pull(popularity)
+  
+  # extract content for markers
+  content <- df_raw %>% 
+    filter(location  == x) %>%
+    filter(hour == Uhrzeit & day_of_week == Tag) %>%
+    mutate(pop = paste("popularity is", popularity, "on", day_of_week, "at", hour)) %>%
+    select(address, time_spendt, pop) %>%
+    paste0(collapse = ",")
+  
+  # add markers to map
+  m <- m %>%
+    addMarkers(lng = longitude,
+               lat = latitude,
+               label = paste(x, content))
+  }
+m 
+```
+
+
+### map current popularity (Datenherhebungszeit: `r unique(df_raw$Zeit)`)
+
+show current popularity for all places map `popularity` to opacity and the radius is proportional to the `popularity`
+i.e. 0% popular places are invisible and 100% popular 
+places are highlighted
+
+
+```{r}
+df_raw %>%
+  filter(hour == Uhrzeit & day_of_week == Tag) %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(lat = ~lon, lng = ~lat,
+                   radius = ~(popularity/10),
+                   opacity = ~popularity,
+                   popup = ~paste(location, "popularity is:", popularity),
+                   ) %>%
+    addMeasure(
+    position = "bottomleft",
+    primaryLengthUnit = "meters",
+    primaryAreaUnit = "sqmeters",
+    activeColor = "#3D535D",
+    completedColor = "#7D4479")
+
+```
+
+
 ### Plots for popular places
 
 work in progress, ich will nur zeigen, dass sich die Daten auch visualisieren lassen.
@@ -132,7 +219,7 @@ plots <- lapply(locations, function(x){
   df_long %>%
   filter(location == x) %>%
   ggplot(aes(x = hour, y = popularity,
-             colour = factor(day_of_week))) + geom_point() + labs(title = paste("location:", x))
+             colour = day_of_week)) + geom_point() + labs(title = paste("location:", x))
 })
 plots[[1]]
 plots[[2]]
