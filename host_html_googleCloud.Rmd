@@ -1,0 +1,32 @@
+---
+title: "host web site google cloud"
+author: "Christian Barz"
+date: "31 7 2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# vorraussetzungen
+
+- [google projekt](https://console.cloud.google.com/)
+- []
+
+# referenz
+
+[guide](https://cloud.google.com/storage/docs/hosting-static-website?hl=de)
+
+In dieser Anleitung werden die folgenden kostenpflichtigen Komponenten von Google Cloud verwendet:
+
+- Cloud Storage
+- Cloud Load Balancing
+
+[preise](https://cloud.google.com/storage/pricing?hl=de#europe)
+
+# anleitung
+
+1. projekt in der console [auswählen](https://console.cloud.google.com/projectselector2/home/dashboard?hl=de&_ga=2.161736441.494347038.1627756608-208296733.1627165040)
+2. Abbrechnung im Projekt aktiv?
+3. domain vorhanden?
