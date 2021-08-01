@@ -34,7 +34,8 @@ p_load(flexdashboard,
     
     df_raw <- df_raw %>%
       mutate(time_spendt = if_else(is.na(time_spendt), "", time_spendt)) %>%
-      mutate(Zeit = lubridate::as_datetime(Zeit))
+      mutate(Zeit = lubridate::as_datetime(Zeit)) %>%
+      mutate(lat = lat + 0.0021)
     
 
     
@@ -46,161 +47,38 @@ p_load(flexdashboard,
                day_of_week  = as.factor(day_of_week))
         
     locations <- unique(df_long$location)
+    Uhrzeiten <- unique(df_long$hour)
+    Tage <- unique(df_long$day_of_week)
 ```
 
 
-### Remark on UI
+### Einleitung
+
+Problemstellung: Eine gute Auswahl von guten Plätzen bei freiwilligen Aktionen 
+(Bsp. Spendensammlung für Flutopfer, Seenothilfe, ...) ist wichtig für den Erfolg
+der Aktion. Um die wertvolle Zeit der Freiwilligen nicht an einem´"verlassenen"
+Ort zu verschwenden, wären Informationen zur Passantendichte interessant.
+
+Um bei der Koordination zu unterstützen haben wir eine App entwickelt, welche
+Informationen zum Ort über Google'S Schnittstelle `Places API ` einholt
+und die Popularität des Ortes auf verschiedene Weisen visualisiert.
 
 
 Das ist ein Vorschlag **bitte Wünsche äußern!** oder **Probleme benennen, die ihr bei der Organisation habt**.
 
-Ich bitte das springen zwischen deutsch und englisch sowie Rechtschreibfehler zu
-entschuldigen. Hintergrund das Erstellen von Texten (wie diesem) ist zeitaufwendig
-daher fokusiere ich mich auf das was ich spontan für relevant halte (und spontan denke ich ggf. gerade englisch). Wenn dies ein Problem ist einfach sagen und ich
-passe das entsprechend an.
 
-#### Zur Bedienung:
+**Bemerkung/To Do's:** 
 
-- click on the tabs to see a differnt table of the data
-- you can filter the tables by clicking on a box below a column name
-- you can sort a column by clicking on an arrow behind a column name
-
-#### Bemerkung:
-
-Da ich noch nicht die Schnittstelle von Google wirklich gut verstanden habe,
-muß ich an ein paar Stellen auf weniger gute Lösungen zurückgreifen.
-
-Im Moment wird jeder Ort identifiziert durch seinen Namen und seine Addresse.
-Das wird bspw. bei Supermärkten ein Problem, da deren Name "REWE" lautet.
-Ferner kann zur Zeit auf diese Weise nicht jeder Ort abgefragt werden.
-
-Dies ist aber behebbar.
-
-### Display popular times long
-
-
-#### Beispiel 1
-
-*Aufgabe:* Ihr habt am Montag und Dienstag von 10-15 Uhr Zeit und wollt den besten Platz 
-finden.
-
-*Lösung:* Wähle bei `day_of_week` Montag und Dienstag aus und stelle bei `hour` den Slider auf 10-14. Anschließend sortiere `popularity` absteigend durch klicken auf den Pfeil hinter `popularity`.
-
-
-```{r plot long table,eval=TRUE}
-DT::datatable(df_long, 
-                      filter = 'top',
-                      rownames = FALSE,
-                      options = list(
-                          list(pageLength = 10)
-                      ))
-```
-
-
-### Display popular times wide
-
-Anwendungsbeispiel: Durch filtern von `hour` und `location` lassen sich 
-Tage identifizieren an denen viel los ist.
-
-```{r plot wide table,eval=TRUE}
-DT::datatable(df_wide, 
-              filter = 'top',
-              rownames = FALSE,
-              options = list(pageLength = 25)
-              )
-```
-
-
-### Display top 5 popular times per location
-
-Hier werden einfach für jede `Location` die Top5 bzgl. `popularity` ausgegeben,
-so kann man bspw. schnell sehen, wann sich welcher Ort am meisten lohnt.
-
-```{r plot top5 table,eval=TRUE}
-df_top_5 <- df_long %>%
-        arrange(desc(popularity)) %>%
-        group_by(location) %>%
-        slice(1:5) 
-
-DT::datatable(df_top_5, 
-                      filter = 'top',
-                      rownames = FALSE,
-                      options = list(pageLength = 25))
-```
-
-
-
-
-### map shows popularity for all places from 12:00 to 13:00
-
-
-**Bemerkung:** Die Längen und Breitenangaben von Google und OpenStreetMap scheinen nicht 100%ig kompatibel zu sein. Dies kann aber mit etwas Recherche behoben werden.
-
-
-```{r plot pop map,eval=TRUE}
-m <- leaflet() %>%
-  addTiles() 
-
-Uhrzeit <- 12
-
-Gruppen <- unique(df_raw$day_of_week)
-for(Tag in Gruppen){
-  for(x in locations){
-    # get coords
-    longitude <- df_raw %>%
-      filter(location  == x & day_of_week == Tag) %>%
-      pull(lat) %>%
-      unique()
-    latitude <- df_raw %>%
-      filter(location  == x & day_of_week == Tag) %>%
-      pull(lon) %>%
-      unique()
-    
-    # get popularity
-    popularity <- df_raw %>%
-      filter(location  == x) %>%
-      filter(hour == Uhrzeit & day_of_week == Tag) %>%
-      pull(popularity)
-    
-    # extract content for markers
-    content <- df_raw %>% 
-      filter(location  == x) %>%
-      filter(hour == Uhrzeit & day_of_week == Tag) %>%
-      mutate(pop = paste("popularity is", popularity, "on", day_of_week, "at", hour)) %>%
-      select(address, time_spendt, pop) %>%
-      paste0(collapse = ",")
-    
-    # add markers to map
-    m <- m %>%
-      addMarkers(lng = longitude,
-                 lat = latitude,
-                 label = paste(x, content),
-                 group = Tag
-      )
-  }  
-}
-
-
-m <- m %>%
-  addLayersControl(
-    baseGroups = Gruppen,
-    options = layersControlOptions(collapsed = FALSE)
-    )
-
-m 
-```
+- [ ] Die Längen und Breitenangaben von Google und OpenStreetMap 
+sind nicht 100%ig kompatibel. Im Moment gehackt. Besser wäre GJSON.
+- [ ] Behebe Fehler bei Zeichenkodierung 
 
 
 ### map current popularity (Datenherhebungszeit: `r unique(df_raw$Zeit)`)
 
-Zeigt die derzeitige Popularität der Plätze, wobei je nach Popularität die Radien der Kreise größer oder klein sind.
-
-Achtung: Im Moment greift das Dashboard auf einen gespeicherten Datensatz zurück. (klar ich schicke es euch ja auch offline) Es kann aber auch in der GoogleCloud gehostet werden und dort würden beim Aufrufen der website, live die Daten abgefragt werden. (wäre das interessant?)
-
-
 **Anwendungsbeispiel**
 
-Spontan die populärsten Orte finden und mit dem Maßband (icon unten links) die Wegstrecke abschätzen.
+Spontan die populärsten Orte finden.
 
 
 ```{r plot current pop map,eval=TRUE}
@@ -218,24 +96,116 @@ df_raw %>%
                    popup = ~paste(location, "current popularity is:", current_pop),
                    ) %>%
     addMeasure(
-    position = "bottomleft",
-    primaryLengthUnit = "meters",
-    primaryAreaUnit = "sqmeters",
-    activeColor = "#3D535D",
-    completedColor = "#7D4479")
+      position = "bottomleft",
+      primaryLengthUnit = "meters",
+      primaryAreaUnit = "sqmeters",
+      activeColor = "#3D535D",
+      completedColor = "#7D4479")
 
 ```
 
 
-### Plots for popular places
+***
+
+Zeigt die derzeitige Popularität der Plätze, wobei der Radius eines Kreises 
+entsprechend der Popularität des Ortes ist, d.h. ein großer Kreis entspricht 
+einer hohen Popularität (zum Zeitpunkt der Datenerhebung).
+
+**Map Feature:** Mit dem Maßband (icon unten links) können die Wegstrecke abgeschätzt werden.
+
+**N.B.:** Im Moment greift das Dashboard auf einen gespeicherten Datensatz zurück.
+In einer Live-Version würde es Ist-Daten abfragen.
 
 
+### Maps and charts for popular places
+
+
+```{r show popularity map per day and time, eval=TRUE}
+# define it in an extra R-Skript
+
+# UI function
+pop_loc_mapUI <- function(id) {
+  ns <- NS(id)
+  fillCol(height = 500, flex = c(NA, 1), 
+    inputPanel(
+      selectInput(ns("Uhrzeit"), "Uhrzeit:", 
+                  selected = lubridate::hour(lubridate::now()),
+                  choices = Uhrzeiten),
+      selectInput(ns("Tag"), "Tag:", 
+                  selected = lubridate::wday(lubridate::now(), 
+                                             label = TRUE, 
+                                             abbr = FALSE),
+                  choices = Tage)
+    ),
+    leafletOutput(ns("pop_map"), height = "100%")
+  )
+}
+
+# Server function
+pop_loc_map <- function(input, output, session) {
+  output$pop_map <- renderLeaflet({
+    Uhrzeit <- input$Uhrzeit
+    Tag <- input$Tag
+    
+    m <- leaflet() %>%
+  addTiles() 
+
+for(x in locations){
+    # get coords
+    longitude <- df_raw %>%
+      filter(location  == x & day_of_week == Tag) %>%
+      pull(lat) %>%
+      unique()
+    latitude <- df_raw %>%
+      filter(location  == x & day_of_week == Tag) %>%
+      pull(lon) %>%
+      unique()
+    
+    # get popularity
+    popularity <- df_raw %>%
+      filter(location  == x) %>%
+      filter(hour == Uhrzeit & day_of_week == Tag) %>%
+      pull(popularity)
+    
+    # extract content for markers
+    content <- df_raw %>% 
+      filter(location  == x) %>%
+      filter(hour == Uhrzeit & day_of_week == Tag) %>%
+      mutate(pop = paste("popularity is", popularity, "on", day_of_week, "at", hour)) %>%
+      select(address, time_spendt, pop) %>%
+      paste0(collapse = ",")
+    
+    # add markers to map
+    m <- m %>%
+      addMarkers(lng = longitude,
+                 lat = latitude,
+                 label = paste(x, content),
+                 group = Tag
+      )
+}
+
+
+# m <- m %>%
+#   addLayersControl(
+#     baseGroups = Tage,
+#     options = layersControlOptions(collapsed = FALSE)
+#     )
+
+m 
+   
+    })
+}
+```
+
+```{r}
+# Include the module
+pop_loc_mapUI("Uhrzeit")
+callModule(pop_loc_map, "Uhrzeit")
+```
 
 ```{r plot pop map2,eval=TRUE}
 m <- leaflet() %>%
   addTiles() 
-
-Uhrzeit <- 12
 
 Gruppen <- unique(df_raw$day_of_week)
 for(Tag in Gruppen){
@@ -283,6 +253,7 @@ m <- m %>%
 
 m 
 ```
+
 ***
 
 Die untere Graphik zeigt wie sich die Popularität am gewählten Ort über die Wochentage und Uhrzeiten verteilt.
@@ -293,20 +264,20 @@ Bitte wählen Sie ihren Ort im drop down menu `Location` aus:
 # define it in an extra R-Skript
 
 # UI function
-worldPhonesUI <- function(id) {
+pop_loc_plotUI <- function(id) {
   ns <- NS(id)
-  fillCol(height = 600, flex = c(NA, 1), 
+  fillCol(height = 500, flex = c(NA, 1), 
     inputPanel(
-      selectInput(ns("region"), "Location:", choices = locations)
+      selectInput(ns("location"), "Location:", choices = locations)
     ),
-    plotOutput(ns("phonePlot"), height = "100%")
+    plotOutput(ns("locationPlot"), height = "80%")
   )
 }
 
 # Server function
-worldPhones <- function(input, output, session) {
-  output$phonePlot <- renderPlot({
-    x <- input$region
+pop_loc_plot <- function(input, output, session) {
+  output$locationPlot <- renderPlot({
+    x <- input$location
     
     p <- df_long %>%
       filter(location == x) %>%
@@ -322,9 +293,62 @@ worldPhones <- function(input, output, session) {
 
 ```{r}
 # Include the module
-worldPhonesUI("location")
-callModule(worldPhones, "location")
+pop_loc_plotUI("location")
+callModule(pop_loc_plot, "location")
 ```
 
 
+### Display popular times long
+
+Anwendungsbeispiel
+
+*Aufgabe:* Ihr habt am Montag und Dienstag von 10-15 Uhr Zeit und wollt den besten Platz 
+finden.
+
+*Lösung:* Wähle bei `day_of_week` Montag und Dienstag aus und stelle bei `hour` den Slider auf 10-14. Anschließend sortiere `popularity` absteigend durch klicken auf den Pfeil hinter `popularity`.
+
+
+```{r plot long table,eval=TRUE}
+df_long %>%
+  DT::datatable(
+    filter = 'top',
+    rownames = FALSE)
+```
+
+#### Zur Bedienung:
+
+- spalten können gefiltert werden, indem man auf die Box unter dem Spaltennamen klickt. 
+- Die Tabelle kann bzgl. einer Spalte sortiert werden, indem man auf einen Pfeil hinter dem Spaltennamen klickt.
+
+### Display popular times wide
+
+Anwendungsbeispiel: Durch filtern von `hour` und `location` lassen sich 
+Tage identifizieren an denen viel los ist.
+
+```{r plot wide table,eval=TRUE}
+DT::datatable(df_wide, 
+              filter = 'top',
+              rownames = FALSE,
+              options = list(pageLength = 25)
+              )
+```
+
+
+### Display top 5 popular times per location
+
+Für jede `Location` werden die 5 Datenpunkte mit der höchsten `popularity` ausgegeben.Auf diese Weise kann man Bspw. schnell sehen, wann sich welcher Ort am meisten lohnt.
+
+
+```{r plot top5 table,eval=TRUE}
+df_top_5 <- df_long %>%
+  select(-current_pop) %>%
+  arrange(desc(popularity)) %>%
+  group_by(location) %>%
+  slice(1:5) 
+
+DT::datatable(df_top_5, 
+                      filter = 'top',
+                      rownames = FALSE,
+                      options = list(pageLength = 25))
+```
 
