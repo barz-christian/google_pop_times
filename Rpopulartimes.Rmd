@@ -141,14 +141,8 @@ convert `day_of_week` from a numerical value to a string
 
 ```{r}
 pop_times_df <- pop_times_df %>%
-  mutate(day_of_week = if_else(day_of_week=="1","Sonntag", day_of_week),
-         day_of_week = if_else(day_of_week=="2","Montag", day_of_week),
-         day_of_week = if_else(day_of_week=="3","Dienstag", day_of_week),
-         day_of_week = if_else(day_of_week=="4","Mittwoch", day_of_week),
-         day_of_week = if_else(day_of_week=="5","Donnerstag", day_of_week),
-         day_of_week = if_else(day_of_week=="6","Freitag", day_of_week),
-         day_of_week = if_else(day_of_week=="7","Samstag", day_of_week),
-         ) %>%
+  mutate(day_of_week = lubridate::wday(as.integer(day_of_week), 
+                                       label = TRUE, abbr = FALSE)) %>%
   mutate(Zeit = lubridate::now(tzone = "GMT"))
 pop_times_df %>% head()
 ```

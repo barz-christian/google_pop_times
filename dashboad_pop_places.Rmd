@@ -8,6 +8,8 @@ output:
     social: menu
     self_contained: false
     keep_md: true
+  html_document:
+    self_contained: false
 runtime: shiny
 ---
 
@@ -184,13 +186,6 @@ for(x in locations){
       )
 }
 
-
-# m <- m %>%
-#   addLayersControl(
-#     baseGroups = Tage,
-#     options = layersControlOptions(collapsed = FALSE)
-#     )
-
 m 
    
     })
@@ -203,7 +198,7 @@ pop_loc_mapUI("Uhrzeit")
 callModule(pop_loc_map, "Uhrzeit")
 ```
 
-```{r plot pop map2,eval=TRUE}
+```{r plot pop map2,eval=FALSE}
 m <- leaflet() %>%
   addTiles() 
 
