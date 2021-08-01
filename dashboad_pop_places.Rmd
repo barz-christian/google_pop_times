@@ -8,6 +8,7 @@ output:
     social: menu
     self_contained: false
     keep_md: true
+runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
@@ -17,6 +18,7 @@ p_load(flexdashboard,
        dplyr,
        ggplot2,
        leaflet,
+       shiny,
        DT)
 ```
 
@@ -44,11 +46,6 @@ p_load(flexdashboard,
                day_of_week  = as.factor(day_of_week))
         
     locations <- unique(df_long$location)
-    
-    df_top_5 <- df_long %>%
-        arrange(desc(popularity)) %>%
-        group_by(location) %>%
-        slice(1:5) 
 ```
 
 
@@ -90,21 +87,13 @@ finden.
 *Lösung:* Wähle bei `day_of_week` Montag und Dienstag aus und stelle bei `hour` den Slider auf 10-14. Anschließend sortiere `popularity` absteigend durch klicken auf den Pfeil hinter `popularity`.
 
 
-```{r}
+```{r plot long table,eval=TRUE}
 DT::datatable(df_long, 
                       filter = 'top',
                       rownames = FALSE,
                       options = list(
-                          list(pageLength = 25),
-                          rowCallback = JS(
-                              'function(row, data) {',
-                              '$("td", row).each(function(i) {',
-                              'if (i == 0) return; // first column is row names',
-                              'if (parseFloat(data[i]) >= 50.0)',
-                              '$(this).css("color", "red");',
-                              '});',
-                              '}'))
-                      )
+                          list(pageLength = 10)
+                      ))
 ```
 
 
@@ -112,9 +101,8 @@ DT::datatable(df_long,
 
 Anwendungsbeispiel: Durch filtern von `hour` und `location` lassen sich 
 Tage identifizieren an denen viel los ist.
-Sobald die Popularity größer als 50 ist, wird sie rot markiert.
 
-```{r}
+```{r plot wide table,eval=TRUE}
 DT::datatable(df_wide, 
               filter = 'top',
               rownames = FALSE,
@@ -128,7 +116,12 @@ DT::datatable(df_wide,
 Hier werden einfach für jede `Location` die Top5 bzgl. `popularity` ausgegeben,
 so kann man bspw. schnell sehen, wann sich welcher Ort am meisten lohnt.
 
-```{r}
+```{r plot top5 table,eval=TRUE}
+df_top_5 <- df_long %>%
+        arrange(desc(popularity)) %>%
+        group_by(location) %>%
+        slice(1:5) 
+
 DT::datatable(df_top_5, 
                       filter = 'top',
                       rownames = FALSE,
@@ -144,7 +137,7 @@ DT::datatable(df_top_5,
 **Bemerkung:** Die Längen und Breitenangaben von Google und OpenStreetMap scheinen nicht 100%ig kompatibel zu sein. Dies kann aber mit etwas Recherche behoben werden.
 
 
-```{r}
+```{r plot pop map,eval=TRUE}
 m <- leaflet() %>%
   addTiles() 
 
@@ -210,7 +203,7 @@ Achtung: Im Moment greift das Dashboard auf einen gespeicherten Datensatz zurüc
 Spontan die populärsten Orte finden und mit dem Maßband (icon unten links) die Wegstrecke abschätzen.
 
 
-```{r}
+```{r plot current pop map,eval=TRUE}
 heute <- unique(df_raw$Zeit)
 Tag <- lubridate::wday(heute, label = TRUE, abbr = FALSE)
 Uhrzeit <- lubridate::hour(heute)
@@ -236,27 +229,102 @@ df_raw %>%
 
 ### Plots for popular places
 
-work in progress, ich will nur zeigen, dass sich die Daten auch visualisieren lassen.
 
-Bspw. könnte hier ein interaktiver button hin, damit man sich eine location
-aussucht. Dafür fehlte mir die Zeit.
+
+```{r plot pop map2,eval=TRUE}
+m <- leaflet() %>%
+  addTiles() 
+
+Uhrzeit <- 12
+
+Gruppen <- unique(df_raw$day_of_week)
+for(Tag in Gruppen){
+  for(x in locations){
+    # get coords
+    longitude <- df_raw %>%
+      filter(location  == x & day_of_week == Tag) %>%
+      pull(lat) %>%
+      unique()
+    latitude <- df_raw %>%
+      filter(location  == x & day_of_week == Tag) %>%
+      pull(lon) %>%
+      unique()
+    
+    # get popularity
+    popularity <- df_raw %>%
+      filter(location  == x) %>%
+      filter(hour == Uhrzeit & day_of_week == Tag) %>%
+      pull(popularity)
+    
+    # extract content for markers
+    content <- df_raw %>% 
+      filter(location  == x) %>%
+      filter(hour == Uhrzeit & day_of_week == Tag) %>%
+      mutate(pop = paste("popularity is", popularity, "on", day_of_week, "at", hour)) %>%
+      select(address, time_spendt, pop) %>%
+      paste0(collapse = ",")
+    
+    # add markers to map
+    m <- m %>%
+      addMarkers(lng = longitude,
+                 lat = latitude,
+                 label = paste(x, content),
+                 group = Tag
+      )
+  }  
+}
+
+
+m <- m %>%
+  addLayersControl(
+    baseGroups = Gruppen,
+    options = layersControlOptions(collapsed = FALSE)
+    )
+
+m 
+```
+***
+
+Die untere Graphik zeigt wie sich die Popularität am gewählten Ort über die Wochentage und Uhrzeiten verteilt.
+
+Bitte wählen Sie ihren Ort im drop down menu `Location` aus:
+
+```{r shiny module for analytic plots}
+# define it in an extra R-Skript
+
+# UI function
+worldPhonesUI <- function(id) {
+  ns <- NS(id)
+  fillCol(height = 600, flex = c(NA, 1), 
+    inputPanel(
+      selectInput(ns("region"), "Location:", choices = locations)
+    ),
+    plotOutput(ns("phonePlot"), height = "100%")
+  )
+}
+
+# Server function
+worldPhones <- function(input, output, session) {
+  output$phonePlot <- renderPlot({
+    x <- input$region
+    
+    p <- df_long %>%
+      filter(location == x) %>%
+      ggplot(aes(x = hour, y = popularity,
+                 colour = day_of_week)) + 
+      geom_point() + 
+      labs(title = paste("Popularität in der Woche am Ort:", x))
+    
+    p
+    })
+}
+```
 
 ```{r}
-plots <- lapply(locations, function(x){
-  df_long %>%
-  filter(location == x) %>%
-  ggplot(aes(x = hour, y = popularity,
-             colour = day_of_week)) + geom_point() + labs(title = paste("location:", x))
-})
-plots[[1]]
-plots[[2]]
-plots[[3]]
-plots[[4]]
-plots[[5]]
-plots[[6]]
-plots[[7]]
-plots[[8]]
-plots[[9]]
-plots[[10]]
+# Include the module
+worldPhonesUI("location")
+callModule(worldPhones, "location")
 ```
+
+
 
