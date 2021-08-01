@@ -11,7 +11,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width=12, fig.height=8)
 library(pacman)
 p_load(flexdashboard,
        dplyr,
@@ -31,7 +31,9 @@ p_load(flexdashboard,
     # prepare data
     
     df_raw <- df_raw %>%
-      mutate(time_spendt = if_else(is.na(time_spendt), "", time_spendt))
+      mutate(time_spendt = if_else(is.na(time_spendt), "", time_spendt)) %>%
+      mutate(Zeit = lubridate::as_datetime(Zeit))
+    
 
     
     
@@ -136,66 +138,91 @@ DT::datatable(df_top_5,
 
 
 
-### map shows popularity for all places on monday from 12:00 to 13:00
+### map shows popularity for all places from 12:00 to 13:00
+
+
+**Bemerkung:** Die Längen und Breitenangaben von Google und OpenStreetMap scheinen nicht 100%ig kompatibel zu sein. Dies kann aber mit etwas Recherche behoben werden.
+
 
 ```{r}
 m <- leaflet() %>%
   addTiles() 
 
 Uhrzeit <- 12
-Tag <- "Montag"
 
-for(x in locations){
-  # get coords
-  longitude <- df_raw %>%
-    filter(location  == x) %>%
-    pull(lat) %>%
-    unique()
-  latitude <- df_raw %>%
-    filter(location  == x) %>%
-    pull(lon) %>%
-    unique()
-  
-  # get popularity
-  popularity <- df_raw %>%
-    filter(location  == x) %>%
-    filter(hour == Uhrzeit & day_of_week == Tag) %>%
-    pull(popularity)
-  
-  # extract content for markers
-  content <- df_raw %>% 
-    filter(location  == x) %>%
-    filter(hour == Uhrzeit & day_of_week == Tag) %>%
-    mutate(pop = paste("popularity is", popularity, "on", day_of_week, "at", hour)) %>%
-    select(address, time_spendt, pop) %>%
-    paste0(collapse = ",")
-  
-  # add markers to map
-  m <- m %>%
-    addMarkers(lng = longitude,
-               lat = latitude,
-               label = paste(x, content))
-  }
+Gruppen <- unique(df_raw$day_of_week)
+for(Tag in Gruppen){
+  for(x in locations){
+    # get coords
+    longitude <- df_raw %>%
+      filter(location  == x & day_of_week == Tag) %>%
+      pull(lat) %>%
+      unique()
+    latitude <- df_raw %>%
+      filter(location  == x & day_of_week == Tag) %>%
+      pull(lon) %>%
+      unique()
+    
+    # get popularity
+    popularity <- df_raw %>%
+      filter(location  == x) %>%
+      filter(hour == Uhrzeit & day_of_week == Tag) %>%
+      pull(popularity)
+    
+    # extract content for markers
+    content <- df_raw %>% 
+      filter(location  == x) %>%
+      filter(hour == Uhrzeit & day_of_week == Tag) %>%
+      mutate(pop = paste("popularity is", popularity, "on", day_of_week, "at", hour)) %>%
+      select(address, time_spendt, pop) %>%
+      paste0(collapse = ",")
+    
+    # add markers to map
+    m <- m %>%
+      addMarkers(lng = longitude,
+                 lat = latitude,
+                 label = paste(x, content),
+                 group = Tag
+      )
+  }  
+}
+
+
+m <- m %>%
+  addLayersControl(
+    baseGroups = Gruppen,
+    options = layersControlOptions(collapsed = FALSE)
+    )
+
 m 
 ```
 
 
 ### map current popularity (Datenherhebungszeit: `r unique(df_raw$Zeit)`)
 
-show current popularity for all places map `popularity` to opacity and the radius is proportional to the `popularity`
-i.e. 0% popular places are invisible and 100% popular 
-places are highlighted
+Zeigt die derzeitige Popularität der Plätze, wobei je nach Popularität die Radien der Kreise größer oder klein sind.
+
+Achtung: Im Moment greift das Dashboard auf einen gespeicherten Datensatz zurück. (klar ich schicke es euch ja auch offline) Es kann aber auch in der GoogleCloud gehostet werden und dort würden beim Aufrufen der website, live die Daten abgefragt werden. (wäre das interessant?)
+
+
+**Anwendungsbeispiel**
+
+Spontan die populärsten Orte finden und mit dem Maßband (icon unten links) die Wegstrecke abschätzen.
 
 
 ```{r}
+heute <- unique(df_raw$Zeit)
+Tag <- lubridate::wday(heute, label = TRUE, abbr = FALSE)
+Uhrzeit <- lubridate::hour(heute)
+
 df_raw %>%
   filter(hour == Uhrzeit & day_of_week == Tag) %>%
   leaflet() %>%
   addTiles() %>%
   addCircleMarkers(lat = ~lon, lng = ~lat,
-                   radius = ~(popularity/10),
-                   opacity = ~popularity,
-                   popup = ~paste(location, "popularity is:", popularity),
+                   radius = ~(current_pop/10),
+                   opacity = ~current_pop,
+                   popup = ~paste(location, "current popularity is:", current_pop),
                    ) %>%
     addMeasure(
     position = "bottomleft",
