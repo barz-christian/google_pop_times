@@ -21,6 +21,9 @@ sidebar <- dashboardSidebar(
     sidebarMenu(
         # Setting id makes input$tabs give the tabName of currently-selected tab
         id = "tabs",
+        menuItem("Info", icon = icon("bolt"), tabName = "Info",
+                 badgeLabel = "Info", badgeColor = "green"),
+        
         menuItem("Map current popularity", icon = icon("binoculars"),
                  tabName = "current_map"),
         
@@ -43,6 +46,18 @@ sidebar <- dashboardSidebar(
 
 body <- dashboardBody(
     tabItems(
+        tabItem("Info",
+                div(h4("Problemstellung:")),
+                div(p('Eine sinnvolle Wahl von Plätzen bei freiwilligen Aktionen
+(Bsp. Spendensammlung für Flutopfer, Seenothilfe, ...) ist wichtig für den Erfolg
+der Aktion. Um die wertvolle Zeit der Freiwilligen nicht an einem´"verlassenen"
+Ort zu verschwenden, wären Informationen zur Passantendichte interessant.')),
+                div(h4("Lösung:")),
+                div(p("Um bei der Koordination zu unterstützen haben wir eine 
+                App entwickelt, welche Informationen zum Ort einholt und die 
+                      Popularität des Ortes auf verschiedene Weisen visualisiert."))
+                ),
+        
         tabItem("current_map",
         div(p("Zeigt die derzeitige Popularität der Plätze, wobei der Radius
                 eines Kreises entsprechend der Popularität des Ortes ist, d.h.
