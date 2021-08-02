@@ -1,207 +1,241 @@
 hour,location,Sonntag,Montag,Dienstag,Mittwoch,Donnerstag,Freitag,Samstag,address
 4,Brennerberg,1,1,1,1,1,1,1,"Tiroler Str. 33, 13187 Berlin"
+4,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
+4,Diseño,0,0,0,0,0,0,0,"Berliner Str. 53, 13189 Berlin"
+4,U Vinetastr.,0,2,1,6,1,3,0,13189 Berlin
+4,S+U Pankow,0,9,11,12,11,17,6,13187 Berlin
+4,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+4,REWE,0,0,0,0,0,0,0,"Eschengraben 47, 13189 Berlin"
+4,Neumann Forum,0,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
+4,S Pankow-Heinersdorf,0,28,12,25,16,19,4,13187 Berlin
+4,PENNY,0,0,0,0,0,0,0,"Wisbyer Str. 38, 13189 Berlin"
 5,Brennerberg,1,1,1,1,1,1,1,"Tiroler Str. 33, 13187 Berlin"
-6,Brennerberg,1,2,2,1,2,1,1,"Tiroler Str. 33, 13187 Berlin"
-7,Brennerberg,5,6,7,4,6,2,3,"Tiroler Str. 33, 13187 Berlin"
-8,Brennerberg,10,10,12,9,11,8,7,"Tiroler Str. 33, 13187 Berlin"
-9,Brennerberg,16,15,17,15,16,12,12,"Tiroler Str. 33, 13187 Berlin"
-10,Brennerberg,23,18,21,20,20,14,16,"Tiroler Str. 33, 13187 Berlin"
-11,Brennerberg,29,20,22,23,24,15,19,"Tiroler Str. 33, 13187 Berlin"
-12,Brennerberg,36,21,22,25,26,18,22,"Tiroler Str. 33, 13187 Berlin"
-13,Brennerberg,45,25,23,28,27,25,29,"Tiroler Str. 33, 13187 Berlin"
-14,Brennerberg,56,40,34,39,28,35,45,"Tiroler Str. 33, 13187 Berlin"
-15,Brennerberg,69,69,60,59,35,46,69,"Tiroler Str. 33, 13187 Berlin"
-16,Brennerberg,79,97,89,77,49,55,90,"Tiroler Str. 33, 13187 Berlin"
-17,Brennerberg,80,98,100,81,53,62,95,"Tiroler Str. 33, 13187 Berlin"
-18,Brennerberg,69,76,86,68,45,65,79,"Tiroler Str. 33, 13187 Berlin"
-19,Brennerberg,49,57,67,51,45,62,55,"Tiroler Str. 33, 13187 Berlin"
-20,Brennerberg,29,47,54,38,50,56,34,"Tiroler Str. 33, 13187 Berlin"
-21,Brennerberg,13,37,39,28,43,46,23,"Tiroler Str. 33, 13187 Berlin"
-22,Brennerberg,4,22,21,18,23,35,18,"Tiroler Str. 33, 13187 Berlin"
-23,Brennerberg,1,8,6,9,6,23,16,"Tiroler Str. 33, 13187 Berlin"
-0,Brennerberg,1,1,1,1,1,14,13,"Tiroler Str. 33, 13187 Berlin"
-1,Brennerberg,1,1,1,1,1,6,8,"Tiroler Str. 33, 13187 Berlin"
-2,Brennerberg,1,1,1,1,1,1,4,"Tiroler Str. 33, 13187 Berlin"
-3,Brennerberg,1,1,1,1,1,1,0,"Tiroler Str. 33, 13187 Berlin"
+5,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
+5,Diseño,0,0,0,0,0,0,0,"Berliner Str. 53, 13189 Berlin"
+5,U Vinetastr.,0,14,15,21,15,14,4,13189 Berlin
+5,S+U Pankow,1,24,28,28,28,30,7,13187 Berlin
+5,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+5,REWE,0,0,0,0,0,0,0,"Eschengraben 47, 13189 Berlin"
+5,Neumann Forum,0,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
+5,S Pankow-Heinersdorf,0,49,31,47,36,37,11,13187 Berlin
+5,PENNY,0,0,0,0,0,0,0,"Wisbyer Str. 38, 13189 Berlin"
+6,Brennerberg,1,0,3,0,1,1,1,"Tiroler Str. 33, 13187 Berlin"
 6,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
-7,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
-8,Kissingen-Stadion,0,17,18,23,14,12,0,"Forchheimer Str. 22, 13189 Berlin"
-9,Kissingen-Stadion,31,21,22,29,17,15,32,"Forchheimer Str. 22, 13189 Berlin"
-10,Kissingen-Stadion,49,25,24,33,21,17,45,"Forchheimer Str. 22, 13189 Berlin"
-11,Kissingen-Stadion,51,29,23,31,25,19,43,"Forchheimer Str. 22, 13189 Berlin"
-12,Kissingen-Stadion,41,31,21,27,27,21,31,"Forchheimer Str. 22, 13189 Berlin"
-13,Kissingen-Stadion,34,31,20,21,29,24,24,"Forchheimer Str. 22, 13189 Berlin"
-14,Kissingen-Stadion,36,31,24,19,30,31,25,"Forchheimer Str. 22, 13189 Berlin"
-15,Kissingen-Stadion,41,32,37,25,34,41,30,"Forchheimer Str. 22, 13189 Berlin"
-16,Kissingen-Stadion,43,38,59,40,47,51,34,"Forchheimer Str. 22, 13189 Berlin"
-17,Kissingen-Stadion,41,48,82,60,74,60,34,"Forchheimer Str. 22, 13189 Berlin"
-18,Kissingen-Stadion,34,60,93,72,100,61,30,"Forchheimer Str. 22, 13189 Berlin"
-19,Kissingen-Stadion,0,60,85,70,96,55,0,"Forchheimer Str. 22, 13189 Berlin"
-20,Kissingen-Stadion,0,46,61,52,65,42,0,"Forchheimer Str. 22, 13189 Berlin"
-21,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
-22,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
-23,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
 6,Diseño,0,0,0,0,0,0,0,"Berliner Str. 53, 13189 Berlin"
+6,U Vinetastr.,3,30,33,40,32,29,10,13189 Berlin
+6,S+U Pankow,3,42,49,48,49,44,11,13187 Berlin
+6,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+6,REWE,0,0,0,0,0,0,0,"Eschengraben 47, 13189 Berlin"
+6,Neumann Forum,0,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
+6,S Pankow-Heinersdorf,4,66,53,66,56,56,19,13187 Berlin
+6,PENNY,0,0,0,0,0,0,0,"Wisbyer Str. 38, 13189 Berlin"
+7,Brennerberg,5,4,7,4,5,4,0,"Tiroler Str. 33, 13187 Berlin"
+7,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
 7,Diseño,0,0,0,0,0,0,0,"Berliner Str. 53, 13189 Berlin"
+7,U Vinetastr.,10,46,51,57,47,45,18,13189 Berlin
+7,S+U Pankow,7,57,63,65,65,55,18,13187 Berlin
+7,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+7,REWE,0,27,22,26,24,26,22,"Eschengraben 47, 13189 Berlin"
+7,Neumann Forum,0,26,25,26,26,27,13,"Neumannstraße 13, 13189 Berlin"
+7,S Pankow-Heinersdorf,10,75,71,78,68,66,28,13187 Berlin
+7,PENNY,0,25,27,32,32,32,24,"Wisbyer Str. 38, 13189 Berlin"
+8,Brennerberg,9,7,12,10,9,14,4,"Tiroler Str. 33, 13187 Berlin"
+8,Kissingen-Stadion,0,19,19,19,14,18,0,"Forchheimer Str. 22, 13189 Berlin"
 8,Diseño,0,0,0,0,0,0,0,"Berliner Str. 53, 13189 Berlin"
+8,U Vinetastr.,18,59,62,69,57,57,27,13189 Berlin
+8,S+U Pankow,13,62,66,73,71,61,26,13187 Berlin
+8,Wochenmarkt Pankow,0,0,0,0,0,25,8,"Breite Str. 17, 13187 Berlin"
+8,REWE,0,41,36,37,35,37,35,"Eschengraben 47, 13189 Berlin"
+8,Neumann Forum,0,47,45,50,47,52,27,"Neumannstraße 13, 13189 Berlin"
+8,S Pankow-Heinersdorf,19,73,79,76,68,65,37,13187 Berlin
+8,PENNY,0,40,43,50,52,54,40,"Wisbyer Str. 38, 13189 Berlin"
+9,Brennerberg,14,11,16,16,13,22,10,"Tiroler Str. 33, 13187 Berlin"
+9,Kissingen-Stadion,29,24,22,24,18,24,29,"Forchheimer Str. 22, 13189 Berlin"
 9,Diseño,0,0,0,0,0,0,0,"Berliner Str. 53, 13189 Berlin"
+9,U Vinetastr.,25,64,64,73,59,63,36,13189 Berlin
+9,S+U Pankow,21,59,62,69,66,61,37,13187 Berlin
+9,Wochenmarkt Pankow,0,0,44,38,0,54,17,"Breite Str. 17, 13187 Berlin"
+9,REWE,0,54,49,47,45,49,50,"Eschengraben 47, 13189 Berlin"
+9,Neumann Forum,0,67,64,75,66,79,47,"Neumannstraße 13, 13189 Berlin"
+9,S Pankow-Heinersdorf,31,63,76,65,59,57,45,13187 Berlin
+9,PENNY,0,56,60,66,70,75,59,"Wisbyer Str. 38, 13189 Berlin"
+10,Brennerberg,20,15,18,21,17,24,16,"Tiroler Str. 33, 13187 Berlin"
+10,Kissingen-Stadion,48,28,23,27,22,28,40,"Forchheimer Str. 22, 13189 Berlin"
 10,Diseño,0,0,0,0,0,0,0,"Berliner Str. 53, 13189 Berlin"
+10,U Vinetastr.,33,64,61,71,56,65,45,13189 Berlin
+10,S+U Pankow,29,54,58,60,59,59,47,13187 Berlin
+10,Wochenmarkt Pankow,0,0,74,66,0,86,28,"Breite Str. 17, 13187 Berlin"
+10,REWE,0,63,57,55,54,60,64,"Eschengraben 47, 13189 Berlin"
+10,Neumann Forum,0,80,76,91,75,96,66,"Neumannstraße 13, 13189 Berlin"
+10,S Pankow-Heinersdorf,42,53,67,51,50,50,53,13187 Berlin
+10,PENNY,0,68,73,78,83,89,77,"Wisbyer Str. 38, 13189 Berlin"
+11,Brennerberg,26,17,19,25,21,22,22,"Tiroler Str. 33, 13187 Berlin"
+11,Kissingen-Stadion,51,31,21,27,25,29,41,"Forchheimer Str. 22, 13189 Berlin"
 11,Diseño,0,0,0,0,0,0,0,"Berliner Str. 53, 13189 Berlin"
+11,U Vinetastr.,39,62,60,68,54,68,53,13189 Berlin
+11,S+U Pankow,37,56,61,55,59,62,56,13187 Berlin
+11,Wochenmarkt Pankow,0,0,81,78,0,100,35,"Breite Str. 17, 13187 Berlin"
+11,REWE,0,66,59,60,60,69,75,"Eschengraben 47, 13189 Berlin"
+11,Neumann Forum,0,82,79,93,76,99,79,"Neumannstraße 13, 13189 Berlin"
+11,S Pankow-Heinersdorf,50,49,60,44,50,52,59,13187 Berlin
+11,PENNY,0,77,81,82,88,96,89,"Wisbyer Str. 38, 13189 Berlin"
+12,Brennerberg,33,19,19,27,23,22,28,"Tiroler Str. 33, 13187 Berlin"
+12,Kissingen-Stadion,43,33,19,25,28,28,36,"Forchheimer Str. 22, 13189 Berlin"
 12,Diseño,0,0,0,0,0,0,0,"Berliner Str. 53, 13189 Berlin"
+12,U Vinetastr.,43,64,67,70,59,75,58,13189 Berlin
+12,S+U Pankow,42,64,69,59,69,70,62,13187 Berlin
+12,Wochenmarkt Pankow,0,0,59,65,0,85,33,"Breite Str. 17, 13187 Berlin"
+12,REWE,0,64,55,63,63,75,82,"Eschengraben 47, 13189 Berlin"
+12,Neumann Forum,0,78,79,89,75,95,82,"Neumannstraße 13, 13189 Berlin"
+12,S Pankow-Heinersdorf,55,54,60,48,60,65,65,13187 Berlin
+12,PENNY,0,83,85,81,86,99,94,"Wisbyer Str. 38, 13189 Berlin"
+13,Brennerberg,43,23,22,29,24,27,36,"Tiroler Str. 33, 13187 Berlin"
+13,Kissingen-Stadion,40,33,18,23,29,26,33,"Forchheimer Str. 22, 13189 Berlin"
 13,Diseño,0,0,0,0,0,0,0,"Berliner Str. 53, 13189 Berlin"
+13,U Vinetastr.,45,70,81,77,70,83,61,13189 Berlin
+13,S+U Pankow,44,74,79,73,83,84,64,13187 Berlin
+13,Wochenmarkt Pankow,0,0,35,43,0,55,24,"Breite Str. 17, 13187 Berlin"
+13,REWE,0,63,53,64,63,80,86,"Eschengraben 47, 13189 Berlin"
+13,Neumann Forum,0,76,82,87,80,93,76,"Neumannstraße 13, 13189 Berlin"
+13,S Pankow-Heinersdorf,55,65,67,62,77,83,70,13187 Berlin
+13,PENNY,0,88,86,81,81,100,92,"Wisbyer Str. 38, 13189 Berlin"
+14,Brennerberg,55,36,36,36,26,35,48,"Tiroler Str. 33, 13187 Berlin"
+14,Kissingen-Stadion,42,34,25,24,30,26,34,"Forchheimer Str. 22, 13189 Berlin"
 14,Diseño,0,0,0,0,0,0,0,"Berliner Str. 53, 13189 Berlin"
-15,Diseño,2,1,1,0,0,10,0,"Berliner Str. 53, 13189 Berlin"
-16,Diseño,9,8,6,6,0,9,0,"Berliner Str. 53, 13189 Berlin"
-17,Diseño,21,13,16,14,8,5,4,"Berliner Str. 53, 13189 Berlin"
-18,Diseño,28,17,31,27,21,14,9,"Berliner Str. 53, 13189 Berlin"
-19,Diseño,28,32,44,40,28,35,18,"Berliner Str. 53, 13189 Berlin"
-20,Diseño,32,47,52,48,41,62,31,"Berliner Str. 53, 13189 Berlin"
-21,Diseño,35,48,56,48,56,89,37,"Berliner Str. 53, 13189 Berlin"
-22,Diseño,29,33,52,39,55,100,35,"Berliner Str. 53, 13189 Berlin"
-23,Diseño,18,17,31,27,36,89,24,"Berliner Str. 53, 13189 Berlin"
-0,Diseño,9,6,9,14,17,62,13,"Berliner Str. 53, 13189 Berlin"
-1,Diseño,4,2,1,6,6,35,5,"Berliner Str. 53, 13189 Berlin"
-4,U Vinetastr.,0,1,4,6,0,2,0,13189 Berlin
-5,U Vinetastr.,0,13,18,20,12,10,1,13189 Berlin
-6,U Vinetastr.,3,29,34,38,26,21,6,13189 Berlin
-7,U Vinetastr.,9,44,50,55,39,33,13,13189 Berlin
-8,U Vinetastr.,16,56,58,66,49,44,22,13189 Berlin
-9,U Vinetastr.,22,62,60,70,53,53,31,13189 Berlin
-10,U Vinetastr.,28,63,59,68,56,59,39,13189 Berlin
-11,U Vinetastr.,33,63,60,65,59,63,46,13189 Berlin
-12,U Vinetastr.,37,66,66,66,68,68,51,13189 Berlin
-13,U Vinetastr.,40,73,78,74,80,73,53,13189 Berlin
-14,U Vinetastr.,42,82,89,85,93,78,54,13189 Berlin
-15,U Vinetastr.,43,87,95,93,100,80,52,13189 Berlin
-16,U Vinetastr.,43,84,92,93,96,76,49,13189 Berlin
-17,U Vinetastr.,42,73,81,83,82,65,45,13189 Berlin
-18,U Vinetastr.,38,58,67,66,64,53,40,13189 Berlin
-19,U Vinetastr.,34,42,52,47,46,42,35,13189 Berlin
-20,U Vinetastr.,28,30,38,32,32,34,29,13189 Berlin
-21,U Vinetastr.,21,22,26,22,22,29,23,13189 Berlin
-22,U Vinetastr.,13,15,16,14,13,24,17,13189 Berlin
-23,U Vinetastr.,6,8,8,8,5,18,12,13189 Berlin
-0,U Vinetastr.,0,0,1,2,0,10,6,13189 Berlin
-1,U Vinetastr.,0,0,0,0,0,3,2,13189 Berlin
+14,U Vinetastr.,46,80,94,87,86,90,62,13189 Berlin
+14,S+U Pankow,43,83,86,89,95,94,63,13187 Berlin
+14,Wochenmarkt Pankow,0,0,22,30,0,29,15,"Breite Str. 17, 13187 Berlin"
+14,REWE,0,65,58,66,62,83,85,"Eschengraben 47, 13189 Berlin"
+14,Neumann Forum,0,81,89,91,88,97,68,"Neumannstraße 13, 13189 Berlin"
+14,S Pankow-Heinersdorf,52,75,78,79,93,96,75,13187 Berlin
+14,PENNY,0,90,88,84,80,95,86,"Wisbyer Str. 38, 13189 Berlin"
+15,Brennerberg,69,60,66,48,39,45,65,"Tiroler Str. 33, 13187 Berlin"
+15,Kissingen-Stadion,42,37,42,32,33,33,36,"Forchheimer Str. 22, 13189 Berlin"
+15,Diseño,1,1,1,0,0,5,0,"Berliner Str. 53, 13189 Berlin"
+15,U Vinetastr.,46,86,100,94,97,90,60,13189 Berlin
+15,S+U Pankow,42,86,89,98,100,96,61,13187 Berlin
+15,Wochenmarkt Pankow,0,0,15,25,0,14,0,"Breite Str. 17, 13187 Berlin"
+15,REWE,0,67,72,70,63,84,82,"Eschengraben 47, 13189 Berlin"
+15,Neumann Forum,0,87,94,94,92,100,62,"Neumannstraße 13, 13189 Berlin"
+15,S Pankow-Heinersdorf,50,78,87,89,100,99,77,13187 Berlin
+15,PENNY,0,88,92,91,81,83,83,"Wisbyer Str. 38, 13189 Berlin"
+16,Brennerberg,79,88,95,61,65,53,80,"Tiroler Str. 33, 13187 Berlin"
+16,Kissingen-Stadion,41,43,67,48,45,44,35,"Forchheimer Str. 22, 13189 Berlin"
+16,Diseño,7,8,5,8,0,11,0,"Berliner Str. 53, 13189 Berlin"
+16,U Vinetastr.,44,85,95,92,98,84,57,13189 Berlin
+16,S+U Pankow,41,84,86,95,94,88,57,13187 Berlin
+16,Wochenmarkt Pankow,0,0,0,19,0,0,0,"Breite Str. 17, 13187 Berlin"
+16,REWE,0,68,89,76,66,81,79,"Eschengraben 47, 13189 Berlin"
+16,Neumann Forum,0,86,92,90,88,95,56,"Neumannstraße 13, 13189 Berlin"
+16,S Pankow-Heinersdorf,48,72,88,87,95,91,78,13187 Berlin
+16,PENNY,0,84,95,97,84,70,85,"Wisbyer Str. 38, 13189 Berlin"
+17,Brennerberg,79,99,100,70,61,59,86,"Tiroler Str. 33, 13187 Berlin"
+17,Kissingen-Stadion,36,52,90,67,70,56,34,"Forchheimer Str. 22, 13189 Berlin"
+17,Diseño,21,11,14,20,2,22,8,"Berliner Str. 53, 13189 Berlin"
+17,U Vinetastr.,41,74,82,81,89,72,53,13189 Berlin
+17,S+U Pankow,40,75,79,83,82,74,53,13187 Berlin
+17,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+17,REWE,0,70,100,82,69,77,78,"Eschengraben 47, 13189 Berlin"
+17,Neumann Forum,0,75,80,78,74,80,50,"Neumannstraße 13, 13189 Berlin"
+17,S Pankow-Heinersdorf,47,60,81,75,82,77,75,13187 Berlin
+17,PENNY,0,80,94,96,84,67,90,"Wisbyer Str. 38, 13189 Berlin"
+18,Brennerberg,68,86,80,70,47,60,80,"Tiroler Str. 33, 13187 Berlin"
+18,Kissingen-Stadion,30,57,97,76,96,60,30,"Forchheimer Str. 22, 13189 Berlin"
+18,Diseño,32,14,28,37,34,40,15,"Berliner Str. 53, 13189 Berlin"
+18,U Vinetastr.,37,59,67,65,72,59,48,13189 Berlin
+18,S+U Pankow,38,63,68,67,68,60,49,13187 Berlin
+18,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+18,REWE,0,74,95,81,68,78,85,"Eschengraben 47, 13189 Berlin"
+18,Neumann Forum,0,56,62,60,55,60,41,"Neumannstraße 13, 13189 Berlin"
+18,S Pankow-Heinersdorf,45,46,69,57,65,63,70,13187 Berlin
+18,PENNY,0,75,85,86,79,75,91,"Wisbyer Str. 38, 13189 Berlin"
+19,Brennerberg,49,65,59,60,54,58,64,"Tiroler Str. 33, 13187 Berlin"
+19,Kissingen-Stadion,0,52,83,69,100,55,0,"Forchheimer Str. 22, 13189 Berlin"
+19,Diseño,32,30,45,54,22,60,27,"Berliner Str. 53, 13189 Berlin"
+19,U Vinetastr.,33,44,52,49,54,49,42,13189 Berlin
+19,S+U Pankow,33,48,54,52,53,48,43,13187 Berlin
+19,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+19,REWE,0,73,76,69,59,83,90,"Eschengraben 47, 13189 Berlin"
+19,Neumann Forum,0,35,42,41,36,40,30,"Neumannstraße 13, 13189 Berlin"
+19,S Pankow-Heinersdorf,41,35,54,41,50,50,61,13187 Berlin
+19,PENNY,0,67,70,67,68,79,81,"Wisbyer Str. 38, 13189 Berlin"
+20,Brennerberg,30,48,45,46,53,51,46,"Tiroler Str. 33, 13187 Berlin"
+20,Kissingen-Stadion,0,38,55,50,71,44,0,"Forchheimer Str. 22, 13189 Berlin"
+20,Diseño,34,47,58,58,48,78,38,"Berliner Str. 53, 13189 Berlin"
+20,U Vinetastr.,27,32,40,35,39,40,35,13189 Berlin
+20,S+U Pankow,27,34,41,41,40,40,37,13187 Berlin
+20,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+20,REWE,0,57,50,49,44,76,76,"Eschengraben 47, 13189 Berlin"
+20,Neumann Forum,0,18,25,25,20,23,20,"Neumannstraße 13, 13189 Berlin"
+20,S Pankow-Heinersdorf,32,26,40,29,38,39,49,13187 Berlin
+20,PENNY,0,52,50,46,53,66,63,"Wisbyer Str. 38, 13189 Berlin"
+21,Brennerberg,15,36,34,31,35,42,31,"Tiroler Str. 33, 13187 Berlin"
+21,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
+21,Diseño,35,50,60,50,71,94,42,"Berliner Str. 53, 13189 Berlin"
+21,U Vinetastr.,20,24,29,26,26,33,28,13189 Berlin
+21,S+U Pankow,19,22,28,30,29,32,30,13187 Berlin
+21,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+21,REWE,0,32,27,28,26,50,45,"Eschengraben 47, 13189 Berlin"
+21,Neumann Forum,0,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
+21,S Pankow-Heinersdorf,22,19,27,20,29,29,37,13187 Berlin
+21,PENNY,0,33,32,27,37,40,41,"Wisbyer Str. 38, 13189 Berlin"
+22,Brennerberg,5,24,21,19,13,32,22,"Tiroler Str. 33, 13187 Berlin"
+22,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
+22,Diseño,31,35,48,31,62,100,37,"Berliner Str. 53, 13189 Berlin"
+22,U Vinetastr.,14,18,19,18,16,26,21,13189 Berlin
+22,S+U Pankow,12,12,17,21,19,25,23,13187 Berlin
+22,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+22,REWE,0,0,0,0,0,0,0,"Eschengraben 47, 13189 Berlin"
+22,Neumann Forum,0,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
+22,S Pankow-Heinersdorf,12,12,16,12,20,20,25,13187 Berlin
+22,PENNY,0,0,0,0,0,0,0,"Wisbyer Str. 38, 13189 Berlin"
+23,Brennerberg,0,12,9,8,1,22,16,"Tiroler Str. 33, 13187 Berlin"
+23,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
+23,Diseño,20,18,32,15,34,92,25,"Berliner Str. 53, 13189 Berlin"
+23,U Vinetastr.,7,12,10,10,7,19,15,13189 Berlin
+23,S+U Pankow,6,5,8,12,11,18,18,13187 Berlin
+23,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+23,REWE,0,0,0,0,0,0,0,"Eschengraben 47, 13189 Berlin"
+23,Neumann Forum,0,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
+23,S Pankow-Heinersdorf,3,4,7,4,12,12,14,13187 Berlin
+23,PENNY,0,0,0,0,0,0,0,"Wisbyer Str. 38, 13189 Berlin"
+0,Brennerberg,1,3,0,1,1,13,11,"Tiroler Str. 33, 13187 Berlin"
+0,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
+0,Diseño,10,5,17,5,12,70,14,"Berliner Str. 53, 13189 Berlin"
+0,U Vinetastr.,1,5,3,2,0,11,9,13189 Berlin
+0,S+U Pankow,3,1,2,5,5,12,13,13187 Berlin
+0,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+0,REWE,0,0,0,0,0,0,0,"Eschengraben 47, 13189 Berlin"
+0,Neumann Forum,0,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
+0,S Pankow-Heinersdorf,0,0,0,0,4,5,5,13187 Berlin
+0,PENNY,0,0,0,0,0,0,0,"Wisbyer Str. 38, 13189 Berlin"
+1,Brennerberg,1,1,1,1,1,6,7,"Tiroler Str. 33, 13187 Berlin"
+1,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
+1,Diseño,2,2,7,1,4,41,7,"Berliner Str. 53, 13189 Berlin"
+1,U Vinetastr.,0,0,0,0,0,4,4,13189 Berlin
+1,S+U Pankow,1,0,0,0,0,8,9,13187 Berlin
+1,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+1,REWE,0,0,0,0,0,0,0,"Eschengraben 47, 13189 Berlin"
+1,Neumann Forum,0,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
+1,S Pankow-Heinersdorf,0,0,0,0,0,0,0,13187 Berlin
+1,PENNY,0,0,0,0,0,0,0,"Wisbyer Str. 38, 13189 Berlin"
+2,Brennerberg,1,1,1,1,1,1,3,"Tiroler Str. 33, 13187 Berlin"
+2,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
+2,Diseño,0,0,0,0,0,0,0,"Berliner Str. 53, 13189 Berlin"
 2,U Vinetastr.,0,0,0,0,0,0,0,13189 Berlin
-3,U Vinetastr.,0,0,0,0,0,0,0,13189 Berlin
-4,S+U Pankow,0,9,13,13,13,15,4,13187 Berlin
-5,S+U Pankow,0,25,29,30,29,27,6,13187 Berlin
-6,S+U Pankow,2,45,48,50,47,41,10,13187 Berlin
-7,S+U Pankow,5,61,64,67,64,52,15,13187 Berlin
-8,S+U Pankow,10,67,72,74,74,58,22,13187 Berlin
-9,S+U Pankow,18,62,69,71,75,58,31,13187 Berlin
-10,S+U Pankow,28,57,61,62,70,56,40,13187 Berlin
-11,S+U Pankow,37,57,57,57,65,57,49,13187 Berlin
-12,S+U Pankow,43,65,62,61,67,64,57,13187 Berlin
-13,S+U Pankow,45,75,75,75,77,75,62,13187 Berlin
-14,S+U Pankow,45,84,90,90,90,84,62,13187 Berlin
-15,S+U Pankow,43,88,97,99,100,86,59,13187 Berlin
-16,S+U Pankow,42,85,94,96,98,80,54,13187 Berlin
-17,S+U Pankow,42,76,81,83,86,69,49,13187 Berlin
-18,S+U Pankow,40,63,65,67,67,56,43,13187 Berlin
-19,S+U Pankow,35,48,50,52,50,46,38,13187 Berlin
-20,S+U Pankow,28,34,37,41,38,37,33,13187 Berlin
-21,S+U Pankow,20,21,26,31,29,30,28,13187 Berlin
-22,S+U Pankow,12,11,17,21,21,23,22,13187 Berlin
-23,S+U Pankow,6,4,9,12,12,17,16,13187 Berlin
-0,S+U Pankow,3,0,3,5,3,11,11,13187 Berlin
-1,S+U Pankow,1,0,0,0,0,6,7,13187 Berlin
-2,S+U Pankow,0,0,0,0,0,5,4,13187 Berlin
-3,S+U Pankow,0,0,3,3,3,7,3,13187 Berlin
-6,Wochenmarkt Pankow,NA,NA,0,0,NA,0,0,"Breite Str. 17, 13187 Berlin"
-7,Wochenmarkt Pankow,NA,NA,0,0,NA,0,0,"Breite Str. 17, 13187 Berlin"
-8,Wochenmarkt Pankow,NA,NA,0,0,NA,26,6,"Breite Str. 17, 13187 Berlin"
-9,Wochenmarkt Pankow,NA,NA,52,43,NA,55,15,"Breite Str. 17, 13187 Berlin"
-10,Wochenmarkt Pankow,NA,NA,86,75,NA,86,28,"Breite Str. 17, 13187 Berlin"
-11,Wochenmarkt Pankow,NA,NA,86,88,NA,100,37,"Breite Str. 17, 13187 Berlin"
-12,Wochenmarkt Pankow,NA,NA,64,73,NA,85,36,"Breite Str. 17, 13187 Berlin"
-13,Wochenmarkt Pankow,NA,NA,42,49,NA,55,26,"Breite Str. 17, 13187 Berlin"
-14,Wochenmarkt Pankow,NA,NA,26,35,NA,29,16,"Breite Str. 17, 13187 Berlin"
-15,Wochenmarkt Pankow,NA,NA,16,28,NA,14,0,"Breite Str. 17, 13187 Berlin"
-16,Wochenmarkt Pankow,NA,NA,0,20,NA,0,0,"Breite Str. 17, 13187 Berlin"
-17,Wochenmarkt Pankow,NA,NA,0,0,NA,0,0,"Breite Str. 17, 13187 Berlin"
-18,Wochenmarkt Pankow,NA,NA,0,0,NA,0,0,"Breite Str. 17, 13187 Berlin"
-19,Wochenmarkt Pankow,NA,NA,0,0,NA,0,0,"Breite Str. 17, 13187 Berlin"
-20,Wochenmarkt Pankow,NA,NA,0,0,NA,0,0,"Breite Str. 17, 13187 Berlin"
-21,Wochenmarkt Pankow,NA,NA,0,0,NA,0,0,"Breite Str. 17, 13187 Berlin"
-22,Wochenmarkt Pankow,NA,NA,0,0,NA,0,0,"Breite Str. 17, 13187 Berlin"
-23,Wochenmarkt Pankow,NA,NA,0,0,NA,0,0,"Breite Str. 17, 13187 Berlin"
-6,REWE,NA,0,0,0,0,0,0,"Eschengraben 47, 13189 Berlin"
-7,REWE,NA,28,24,27,24,32,24,"Eschengraben 47, 13189 Berlin"
-8,REWE,NA,47,38,39,36,46,37,"Eschengraben 47, 13189 Berlin"
-9,REWE,NA,65,52,51,49,60,51,"Eschengraben 47, 13189 Berlin"
-10,REWE,NA,79,63,61,59,71,66,"Eschengraben 47, 13189 Berlin"
-11,REWE,NA,83,68,68,67,79,78,"Eschengraben 47, 13189 Berlin"
-12,REWE,NA,80,68,72,71,83,87,"Eschengraben 47, 13189 Berlin"
-13,REWE,NA,76,67,75,73,83,90,"Eschengraben 47, 13189 Berlin"
-14,REWE,NA,78,69,76,75,80,87,"Eschengraben 47, 13189 Berlin"
-15,REWE,NA,82,76,78,77,79,79,"Eschengraben 47, 13189 Berlin"
-16,REWE,NA,80,86,84,79,82,71,"Eschengraben 47, 13189 Berlin"
-17,REWE,NA,77,92,92,81,88,72,"Eschengraben 47, 13189 Berlin"
-18,REWE,NA,79,91,95,80,91,87,"Eschengraben 47, 13189 Berlin"
-19,REWE,NA,78,80,84,71,83,100,"Eschengraben 47, 13189 Berlin"
-20,REWE,NA,58,63,61,53,63,84,"Eschengraben 47, 13189 Berlin"
-21,REWE,NA,29,43,33,32,37,46,"Eschengraben 47, 13189 Berlin"
-22,REWE,NA,0,0,0,0,0,0,"Eschengraben 47, 13189 Berlin"
-23,REWE,NA,0,0,0,0,0,0,"Eschengraben 47, 13189 Berlin"
-6,Neumann Forum,NA,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
-7,Neumann Forum,NA,27,27,29,28,26,12,"Neumannstraße 13, 13189 Berlin"
-8,Neumann Forum,NA,46,49,56,46,49,26,"Neumannstraße 13, 13189 Berlin"
-9,Neumann Forum,NA,66,71,83,63,74,45,"Neumannstraße 13, 13189 Berlin"
-10,Neumann Forum,NA,78,83,97,74,93,63,"Neumannstraße 13, 13189 Berlin"
-11,Neumann Forum,NA,81,84,95,78,98,74,"Neumannstraße 13, 13189 Berlin"
-12,Neumann Forum,NA,80,83,88,80,93,76,"Neumannstraße 13, 13189 Berlin"
-13,Neumann Forum,NA,82,87,88,84,87,70,"Neumannstraße 13, 13189 Berlin"
-14,Neumann Forum,NA,88,95,94,90,88,64,"Neumannstraße 13, 13189 Berlin"
-15,Neumann Forum,NA,92,100,98,93,94,60,"Neumannstraße 13, 13189 Berlin"
-16,Neumann Forum,NA,90,95,94,89,93,58,"Neumannstraße 13, 13189 Berlin"
-17,Neumann Forum,NA,77,80,81,77,82,52,"Neumannstraße 13, 13189 Berlin"
-18,Neumann Forum,NA,59,59,61,60,60,41,"Neumannstraße 13, 13189 Berlin"
-19,Neumann Forum,NA,39,38,41,41,37,28,"Neumannstraße 13, 13189 Berlin"
-20,Neumann Forum,NA,22,22,24,25,19,17,"Neumannstraße 13, 13189 Berlin"
-21,Neumann Forum,NA,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
-22,Neumann Forum,NA,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
-23,Neumann Forum,NA,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
-4,S Pankow-Heinersdorf,1,25,19,23,24,19,3,13187 Berlin
-5,S Pankow-Heinersdorf,2,50,45,45,45,41,10,13187 Berlin
-6,S Pankow-Heinersdorf,5,71,72,66,61,61,18,13187 Berlin
-7,S Pankow-Heinersdorf,10,79,90,76,69,70,26,13187 Berlin
-8,S Pankow-Heinersdorf,19,73,90,73,67,65,34,13187 Berlin
-9,S Pankow-Heinersdorf,29,61,75,58,59,51,40,13187 Berlin
-10,S Pankow-Heinersdorf,39,53,57,43,53,39,46,13187 Berlin
-11,S Pankow-Heinersdorf,48,52,47,37,56,38,53,13187 Berlin
-12,S Pankow-Heinersdorf,53,58,52,45,68,53,61,13187 Berlin
-13,S Pankow-Heinersdorf,55,66,69,64,83,74,68,13187 Berlin
-14,S Pankow-Heinersdorf,55,72,88,86,96,92,72,13187 Berlin
-15,S Pankow-Heinersdorf,54,75,97,98,100,96,71,13187 Berlin
-16,S Pankow-Heinersdorf,54,74,92,95,94,87,67,13187 Berlin
-17,S Pankow-Heinersdorf,53,68,77,80,81,69,60,13187 Berlin
-18,S Pankow-Heinersdorf,50,59,60,60,66,52,53,13187 Berlin
-19,S Pankow-Heinersdorf,43,48,46,43,51,38,46,13187 Berlin
-20,S Pankow-Heinersdorf,33,35,35,32,39,28,40,13187 Berlin
-21,S Pankow-Heinersdorf,21,23,25,24,26,21,32,13187 Berlin
-22,S Pankow-Heinersdorf,10,11,15,18,15,14,23,13187 Berlin
-23,S Pankow-Heinersdorf,2,2,6,11,5,7,14,13187 Berlin
-0,S Pankow-Heinersdorf,0,0,0,3,0,0,6,13187 Berlin
-1,S Pankow-Heinersdorf,0,0,0,0,0,0,1,13187 Berlin
+2,S+U Pankow,0,0,0,0,0,6,7,13187 Berlin
+2,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+2,REWE,0,0,0,0,0,0,0,"Eschengraben 47, 13189 Berlin"
+2,Neumann Forum,0,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
 2,S Pankow-Heinersdorf,0,0,0,0,0,0,0,13187 Berlin
-3,S Pankow-Heinersdorf,0,5,2,6,7,4,0,13187 Berlin
-6,PENNY,NA,0,0,0,0,0,0,"Wisbyer Str. 38, 13189 Berlin"
-7,PENNY,NA,30,30,36,32,32,25,"Wisbyer Str. 38, 13189 Berlin"
-8,PENNY,NA,46,46,52,49,50,41,"Wisbyer Str. 38, 13189 Berlin"
-9,PENNY,NA,61,63,66,65,67,58,"Wisbyer Str. 38, 13189 Berlin"
-10,PENNY,NA,72,78,78,78,79,73,"Wisbyer Str. 38, 13189 Berlin"
-11,PENNY,NA,77,88,84,85,85,84,"Wisbyer Str. 38, 13189 Berlin"
-12,PENNY,NA,79,93,86,87,87,89,"Wisbyer Str. 38, 13189 Berlin"
-13,PENNY,NA,82,96,87,87,88,88,"Wisbyer Str. 38, 13189 Berlin"
-14,PENNY,NA,88,98,90,89,91,86,"Wisbyer Str. 38, 13189 Berlin"
-15,PENNY,NA,94,100,94,93,95,85,"Wisbyer Str. 38, 13189 Berlin"
-16,PENNY,NA,97,100,93,96,93,87,"Wisbyer Str. 38, 13189 Berlin"
-17,PENNY,NA,94,95,90,96,88,89,"Wisbyer Str. 38, 13189 Berlin"
-18,PENNY,NA,85,85,86,89,84,88,"Wisbyer Str. 38, 13189 Berlin"
-19,PENNY,NA,71,69,79,76,78,79,"Wisbyer Str. 38, 13189 Berlin"
-20,PENNY,NA,53,51,61,58,60,62,"Wisbyer Str. 38, 13189 Berlin"
-21,PENNY,NA,35,33,37,39,32,43,"Wisbyer Str. 38, 13189 Berlin"
-22,PENNY,NA,0,0,0,0,0,0,"Wisbyer Str. 38, 13189 Berlin"
-23,PENNY,NA,0,0,0,0,0,0,"Wisbyer Str. 38, 13189 Berlin"
+2,PENNY,0,0,0,0,0,0,0,"Wisbyer Str. 38, 13189 Berlin"
+3,Brennerberg,1,1,1,1,1,1,1,"Tiroler Str. 33, 13187 Berlin"
+3,Kissingen-Stadion,0,0,0,0,0,0,0,"Forchheimer Str. 22, 13189 Berlin"
+3,Diseño,0,0,0,0,0,0,0,"Berliner Str. 53, 13189 Berlin"
+3,U Vinetastr.,0,0,0,0,0,0,0,13189 Berlin
+3,S+U Pankow,0,1,1,2,2,9,6,13187 Berlin
+3,Wochenmarkt Pankow,0,0,0,0,0,0,0,"Breite Str. 17, 13187 Berlin"
+3,REWE,0,0,0,0,0,0,0,"Eschengraben 47, 13189 Berlin"
+3,Neumann Forum,0,0,0,0,0,0,0,"Neumannstraße 13, 13189 Berlin"
+3,S Pankow-Heinersdorf,0,10,0,7,2,5,0,13187 Berlin
+3,PENNY,0,0,0,0,0,0,0,"Wisbyer Str. 38, 13189 Berlin"

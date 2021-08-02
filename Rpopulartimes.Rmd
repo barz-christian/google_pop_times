@@ -137,6 +137,39 @@ pop_times_df <- lapply(locations, function(x){
   select(-place_ID)
 ```
 
+# add missing data
+
+```{r}
+# generate missing data points
+timeframe <- pop_times_df %>%
+  select(day_of_week, hour) %>%
+  unique()
+
+keys <- pop_times_df %>%
+  select(location, address, lon, lat, time_spendt)
+
+blueprint <- full_join(x = timeframe, y = keys, by = character()) %>%
+  unique()
+
+pop_times_df <- blueprint %>%
+  left_join(x = ., y = pop_times_df)
+
+
+# fill NA
+pop_times_df <- pop_times_df %>%
+  mutate(time_spendt = if_else(is.na(time_spendt),
+                                "", time_spendt),
+         popularity = if_else(is.na(popularity),
+                                as.integer(0), popularity),
+         current_pop = if_else(is.na(current_pop),
+                                -1, current_pop)
+         )
+
+```
+
+
+
+
 convert `day_of_week` from a numerical value to a string
 
 ```{r}
