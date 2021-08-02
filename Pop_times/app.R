@@ -81,7 +81,12 @@ body <- dashboardBody(
                 inputPanel(
                     selectInput(inputId = "location", 
                                 label = "Location:", 
-                                choices = locations)
+                                choices = locations),
+                    checkboxGroupInput(inputId = "days_for_charts",
+                                       label = "Wähle Tage",
+                                       choices = Tage,
+                                       selected = Tag
+                                       )
                     ),
                 mainPanel(plotOutput(outputId = "locationPlot"))
                 ),
@@ -173,9 +178,11 @@ server <- function(input, output) {
     
     output$locationPlot <- renderPlot({
         x <- input$location
+        y <- input$days_for_charts
 
         p <- df_long %>%
             filter(location == x) %>%
+            filter(day_of_week %in% y) %>%
             ggplot(aes(x = hour, y = popularity,
                        colour = day_of_week)) +
             geom_point() +
