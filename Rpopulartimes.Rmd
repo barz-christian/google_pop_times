@@ -89,7 +89,7 @@ places_of_interest <- tibble(
                "ChIJDWbXAvZNqEcRJ0KxM9Uo3lA",# REWE eschengraben
                "ChIJ3XM6HAtSqEcR2Or9CGbkI2E",# neumannforum
                "ChIJqVSMNHlSqEcRODE2mEx0GwI",
-               "ChIJn_rebfdNqEcR0pIqK93_hW0"# konsum Sotty
+               "ChIJn_rebfdNqEcR0pIqK93_hW0"# konsum 
                )
   )
 
