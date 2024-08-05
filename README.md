@@ -6,3 +6,5 @@ And what is this good for?
 
 For example we want to collect donations for the [victims the flood in germany](https://www.tagesschau.de/inland/hochwasserkatastrophe-101.html). Hence 
 we are looking for high freuquent places.
+
+A simple example how use the data can be seen here (text in german): https://christianbarz.shinyapps.io/pop_times/
